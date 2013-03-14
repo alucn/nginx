@@ -55,12 +55,12 @@ typedef struct {
 
 
 struct ngx_pool_s {
-    ngx_pool_data_t       d;
-    size_t                max;
-    ngx_pool_t           *current;
-    ngx_chain_t          *chain;
-    ngx_pool_large_t     *large;
-    ngx_pool_cleanup_t   *cleanup;
+    ngx_pool_data_t       d; //数据块
+    size_t                max; //当前小块内存的最大值
+    ngx_pool_t           *current; //用来保存当前的内存池
+    ngx_chain_t          *chain; //可以挂一个chain结构
+    ngx_pool_large_t     *large; //当要分配的内存大于max,分配大块内存
+    ngx_pool_cleanup_t   *cleanup; //该块内存释放的时候,同时需要释放的其他资源
     ngx_log_t            *log;
 };
 
